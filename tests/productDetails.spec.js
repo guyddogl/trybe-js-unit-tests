@@ -47,5 +47,6 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     const string = productDetails('Álcool', 'Máscara')[1].details.productId;
     const stringLength = string.length;
     expect(string.substring(stringLength - 3)).toBe('123');
+    expect(string.endsWith('123')).toBe(true);
   });
 });
