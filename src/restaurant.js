@@ -102,7 +102,7 @@ const createMenu = (obj) => {
 };
 
 console.log(createMenu({ food: 'coxinha', drink: 'água' }));
-console.log(createMenu({food: {}, drink: {}}).fetchMenu());
+console.log(createMenu({ food: {}, drink: {} }).fetchMenu());
 // console.log(Array.isArray(createMenu().consumption));
 // console.log(Object.keys(createMenu({ food: {}, drink: {} }).fetchMenu()));
 
