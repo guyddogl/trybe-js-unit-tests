@@ -92,17 +92,42 @@
 // - fará a soma do preço desses itens;
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
-
 const createMenu = (obj) => {
-  const menu = { 
-    fetchMenu: () => obj,
-    consumption: [],
+  const menu = { fetchMenu: () => obj };
+  menu.consumption = [];
+  menu.order = (request) => menu.consumption.push(request);
+  menu.pay = () => { 
+    const itens = menu.consumption;
+    const menuPrice = menu.fetchMenu();
+    let total = 0;
+    for (let index = 0; index < itens.length; index += 1) {
+      if(Object.keys(menuPrice.food).includes(itens[index])) {
+        total += menuPrice.food[itens[index]];
+      }
+      if(Object.keys(menuPrice.drinks).includes(itens[index])) {
+        total += menuPrice.drinks[itens[index]];
+      }
+    }
+    return total
   };
   return menu;
 };
 
-console.log(createMenu({ food: 'coxinha', drink: 'água' }));
-console.log(createMenu({ food: {}, drink: {} }).fetchMenu());
+const objetoRetornado = createMenu({
+  food: { coxinha: 3.90, sopa: 9.90 },
+  drinks: { água: 3.90, cerveja: 6.90 },
+});
+objetoRetornado.order('sopa');
+objetoRetornado.order('água');
+objetoRetornado.order('coxinha');
+console.log(objetoRetornado.pay());
+// let palavra = 'string';
+// console.log(createMenu().order(palavra));
+// // console.log(createMenu().order);
+// console.log(createMenu().consumption);
+// console.log(Object.keys(createMenu));
+// console.log(createMenu({ food: 'coxinha', drink: 'água' }));
+// console.log(createMenu({ food: {}, drink: {} }).fetchMenu());
 // console.log(Array.isArray(createMenu().consumption));
 // console.log(Object.keys(createMenu({ food: {}, drink: {} }).fetchMenu()));
 
