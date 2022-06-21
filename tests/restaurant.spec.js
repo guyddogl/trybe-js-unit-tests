@@ -90,19 +90,25 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     // const objetoRetornado = createMenu(objetoQualquer);
     // objetoRetornado.order("coxinha");
     // objetoRetornado.consumption // Retorno: ["coxinha"]
-    // ```
+    const objetoRetornado = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'água': 3.9, 'cerveja': 6.9} });
+    objetoRetornado.order('coxinha');
+    expect(objetoRetornado.consumption).toEqual(['coxinha']);
     // Agora faça o PASSO 3 no arquivo `src/restaurant.js`.
     // --------------------------------------------------------------------------------------
   });
-  it('Teste 6: ', () => {
+  it('Teste 6: Verifique se, ao adicionar três pedidos, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos', () => {
     // TESTE 6: Verifique se, ao adicionar três pedidos, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos.
-    // ```
     // objetoRetornado.order("coxinha");
     // objetoRetornado.order("água");
     // objetoRetornado.order("sopa");
     // objetoRetornado.order("sashimi");
     // objetoRetornado.consumption // Retorno: ["coxinha", "água", "sopa", "sashimi"]
-    // ```
+    const objetoRetornado = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'água': 3.9, 'cerveja': 6.9} });
+    objetoRetornado.order("coxinha");
+    objetoRetornado.order("água");
+    objetoRetornado.order("sopa");
+    objetoRetornado.order("cerveja");
+    expect(objetoRetornado.consumption).toEqual(['coxinha', 'água', 'sopa', 'cerveja']);
     // Agora faça o TESTE 7 deste arquivo.
     // --------------------------------------------------------------------------------------
   });
