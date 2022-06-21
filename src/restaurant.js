@@ -104,8 +104,8 @@ const createMenu = (obj) => {
       if (Object.keys(menuPrice.food).includes(itens[index])) {
         total += menuPrice.food[itens[index]];
       }
-      if (Object.keys(menuPrice.drinks).includes(itens[index])) {
-        total += menuPrice.drinks[itens[index]];
+      if (Object.keys(menuPrice.drink).includes(itens[index])) {
+        total += menuPrice.drink[itens[index]];
       }
     }
     return total;
@@ -115,7 +115,7 @@ const createMenu = (obj) => {
 
 const objetoRetornado = createMenu({
   food: { coxinha: 3.90, sopa: 9.90 },
-  drinks: { água: 3.90, cerveja: 6.90 },
+  drink: { água: 3.90, cerveja: 6.90 },
 });
 objetoRetornado.order('sopa');
 objetoRetornado.order('água');

@@ -112,25 +112,31 @@ describe('10 - Implemente os casos de teste e a função `createMenu`', () => {
     // Agora faça o TESTE 7 deste arquivo.
     // --------------------------------------------------------------------------------------
   });
-  it('Teste 7: ', () => {
+  it('Teste 7: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`', () => {
     // TESTE 7: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.
-    // ```
     // objetoRetornado.order('coxinha');
-    // objetoRetornado.order('agua');
+    // objetoRetornado.order('água');
     // objetoRetornado.order('coxinha');
-    // objetoRetornado.consumption // Retorno: ['coxinha', 'agua', 'coxinha']
-    // ```
+    // objetoRetornado.consumption // Retorno: ['coxinha', 'água', 'coxinha']
+    const objetoRetornado = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'água': 3.9, 'cerveja': 6.9} });
+    objetoRetornado.order('coxinha');
+    objetoRetornado.order('água');
+    objetoRetornado.order('coxinha');
+    expect(objetoRetornado.consumption).toEqual(['coxinha', 'água', 'coxinha']);
     // Agora faça o TESTE 8 deste arquivo.
     // --------------------------------------------------------------------------------------
   });
-  it('Teste 8: ', () => {
+  it('Teste 8: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`', () => {
     // TESTE 8: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`
-    // ```
     // objetoRetornado.order('coxinha');
-    // objetoRetornado.order('agua');
+    // objetoRetornado.order('água');
     // objetoRetornado.order('coxinha');
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
-    // ```
+    const objetoRetornado = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'água': 3.9, 'cerveja': 6.9} });
+    objetoRetornado.order('sopa');
+    objetoRetornado.order('água');
+    objetoRetornado.order('coxinha');
+    expect(objetoRetornado.pay()).toBeCloseTo(17.7);
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
   });
 });
