@@ -108,7 +108,8 @@ const createMenu = (obj) => {
         total += menuPrice.drink[itens[index]];
       }
     }
-    return total;
+    const taxa = total * 0.1; 
+    return total + taxa;
   };
   return menu;
 };
