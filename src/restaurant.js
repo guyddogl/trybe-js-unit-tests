@@ -105,8 +105,7 @@ const createMenu = (obj) => {
       for (let index = 0; index < itens.length; index += 1) {
         if (Object.keys(menuPrice.food).includes(itens[index])) {
           total += menuPrice.food[itens[index]];
-        }
-        if (Object.keys(menuPrice.drink).includes(itens[index])) {
+        } else {
           total += menuPrice.drink[itens[index]];
         }
       }
